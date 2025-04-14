@@ -8,56 +8,62 @@
 <body>
   <div class="navbar">
     <h1>HazardCS</h1>
-    <div class="wallet">Portfel: <span id="wallet">0</span> zł</div>
+    <div class="nav-links">
+      <button onclick="showSection('cases')">Skrzynki</button>
+      <button onclick="showSection('upgrader')">Upgrader</button>
+      <button onclick="showSection('inventory')">Ekwipunek</button>
+      <button onclick="showSection('codes')">Kody</button>
+    </div>
+    <div class="wallet">💰 <span id="wallet">0.00</span> zł</div>
   </div>
 
-  <div class="inventory-toggle" onclick="toggleInventory()">☰ Ekwipunek</div>
+  <!-- Sekcja: Skrzynki -->
+  <div class="section" id="cases-section">
+    <div class="cases">
+      <div class="case-card" onclick="openCaseModal(2)">
+        <img src="img/case1.png" alt="Skrzynka 1">
+        <h3>Skrzynka 1</h3>
+        <p>2 zł</p>
+      </div>
+      <div class="case-card" onclick="openCaseModal(10)">
+        <img src="img/case2.png" alt="Skrzynka 2">
+        <h3>Skrzynka 2</h3>
+        <p>10 zł</p>
+      </div>
+      <div class="case-card" onclick="openCaseModal(20)">
+        <img src="img/case3.png" alt="Skrzynka 3">
+        <h3>Skrzynka 3</h3>
+        <p>20 zł</p>
+      </div>
+    </div>
+  </div>
 
-  <div class="inventory">
+  <!-- Sekcja: Upgrader -->
+  <div class="section" id="upgrader-section" style="display:none;">
+    <h2>Upgrader (w budowie 🛠️)</h2>
+    <p>Tu będzie możliwość wymiany skinów na lepsze z obliczonym procentem szansy.</p>
+  </div>
+
+  <!-- Sekcja: Ekwipunek -->
+  <div class="section" id="inventory-section" style="display:none;">
     <h2>Ekwipunek</h2>
     <ul id="inventory-list"></ul>
   </div>
 
-  <div class="code-redeem">
+  <!-- Sekcja: Kody -->
+  <div class="section" id="codes-section" style="display:none;">
+    <h2>Użyj kodu promocyjnego</h2>
     <input type="text" id="code-input" placeholder="Wpisz kod...">
     <button id="redeem-code">Użyj kodu</button>
   </div>
 
-  <div class="cases">
-    <div class="case" data-price="2">
-      <img src="img/case1.png" alt="Skrzynka 1" class="case-img">
-      <h2>Skrzynka 1 – 2 zł</h2>
-      <ul>
-        <li>85% – Zwykły skin</li>
-        <li>13% – Rzadki skin</li>
-        <li>2% – Epicki skin</li>
-      </ul>
-      <button class="open-btn">Otwórz</button>
-      <div class="spinner"></div>
-    </div>
-
-    <div class="case" data-price="10">
-      <img src="img/case2.png" alt="Skrzynka 2" class="case-img">
-      <h2>Skrzynka 2 – 10 zł</h2>
-      <ul>
-        <li>75% – Zwykły skin</li>
-        <li>20% – Rzadki skin</li>
-        <li>5% – Epicki skin</li>
-      </ul>
-      <button class="open-btn">Otwórz</button>
-      <div class="spinner"></div>
-    </div>
-
-    <div class="case" data-price="20">
-      <img src="img/case3.png" alt="Skrzynka 3" class="case-img">
-      <h2>Skrzynka 3 – 20 zł</h2>
-      <ul>
-        <li>65% – Zwykły skin</li>
-        <li>25% – Rzadki skin</li>
-        <li>10% – Epicki skin</li>
-      </ul>
-      <button class="open-btn">Otwórz</button>
-      <div class="spinner"></div>
+  <!-- Modal skrzynki -->
+  <div id="case-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeCaseModal()">&times;</span>
+      <h2 id="modal-title">Skrzynka</h2>
+      <div class="spinner" id="spinner"></div>
+      <button id="open-case-btn">Otwórz skrzynkę</button>
     </div>
   </div>
 
