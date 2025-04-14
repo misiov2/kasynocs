@@ -3,51 +3,69 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
   color: white;
+  overflow-x: hidden;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 15px 30px;
-  background-color: #1c2b3a;
   align-items: center;
+  background-color: #1c2b3a;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  position: relative;
 }
 
 .nav-links button {
   margin: 0 10px;
-  background: #2c97de;
+  background-color: #2c97de;
+  color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
-  color: white;
+  transition: transform 0.2s;
+}
+
+.nav-links button:hover {
+  transform: scale(1.05);
 }
 
 .wallet {
-  background: #1f3b4d;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  font-weight: bold;
+  background-color: #1f3b4d;
   padding: 10px 15px;
   border-radius: 8px;
 }
 
 .section {
-  padding: 40px;
+  padding: 30px;
+  display: none;
+}
+
+#cases-section {
+  display: block;
 }
 
 .cases {
   display: flex;
   justify-content: center;
-  gap: 30px;
   flex-wrap: wrap;
+  gap: 30px;
 }
 
 .case-card {
-  background: #1a2733;
+  background-color: #1a2733;
   padding: 20px;
   border-radius: 16px;
-  width: 200px;
+  width: 220px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease-in-out;
 }
 
 .case-card:hover {
@@ -56,68 +74,82 @@ body {
 
 .case-card img {
   width: 100px;
-  height: 100px;
-}
-
-#inventory-list li {
-  background-color: #29455f;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-input {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  width: 200px;
-}
-
-button {
-  padding: 10px 15px;
-  border: none;
-  background: #2c97de;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 /* Modal */
 .modal {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 99;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  background: #1c2b3a;
+  background-color: #1c2b3a;
   padding: 30px;
   border-radius: 12px;
-  width: 400px;
   text-align: center;
+  width: 500px;
   position: relative;
 }
 
 .close {
   position: absolute;
-  top: 15px;
   right: 20px;
-  cursor: pointer;
+  top: 10px;
   font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #2c97de;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
 }
 
 .spinner {
+  margin: 20px 0;
   height: 60px;
-  margin: 20px auto;
   overflow: hidden;
-  white-space: nowrap;
   border-top: 2px solid #2c97de;
   border-bottom: 2px solid #2c97de;
+  white-space: nowrap;
+}
+
+#inventory-list {
+  list-style: none;
+  padding: 0;
+}
+
+#inventory-list li {
+  background-color: #29455f;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#inventory-list img {
+  width: 50px;
+  height: auto;
+  border-radius: 4px;
 }
