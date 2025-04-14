@@ -1,31 +1,78 @@
-const openBtn = document.getElementById('open-case');
-const result = document.getElementById('result');
-const dropInfo = document.getElementById('drop-info');
+let wallet = 0;
+let codeUsed = false;
+const walletDisplay = document.getElementById('wallet');
+const inventoryList = document.getElementById('inventory-list');
 
-const skins = [
-  { name: "AK-47 | Redline", rarity: "rare", emoji: "🔴" },
-  { name: "AWP | Asiimov", rarity: "legendary", emoji: "🟡" },
-  { name: "Glock-18 | Fade", rarity: "epic", emoji: "🟣" },
-  { name: "P250 | Sand Dune", rarity: "common", emoji: "⚪" },
-  { name: "Knife | Karambit", rarity: "ultra", emoji: "💎" }
-];
+const skins = {
+  2: ['MP9 | Bioleak', 'P250 | Valence', 'Galil AR | Rocket Pop', 'FAMAS | Mecha Industries'],
+  10: ['AK-47 | Redline', 'M4A1-S | Leaded Glass', 'AWP | Atheris', 'USP-S | Cyrex'],
+  20: ['AK-47 | Neon Rider', 'M4A4 | Desolate Space', 'AWP | Hyper Beast', 'Glock-18 | Fade']
+};
 
-function getRandomSkin() {
-  const randomIndex = Math.floor(Math.random() * skins.length);
-  return skins[randomIndex];
+document.getElementById('redeem-code').addEventListener('click', () => {
+  if (!codeUsed) {
+    wallet += 20;
+    updateWallet();
+    alert("Kod FREE aktywowany! +20 zł");
+    codeUsed = true;
+  } else {
+    alert("Kod już użyty!");
+  }
+});
+
+function updateWallet() {
+  walletDisplay.textContent = wallet.toFixed(2);
 }
 
-openBtn.addEventListener('click', () => {
-  result.textContent = "🎰";
-  dropInfo.textContent = "";
+function sellItem(value, li) {
+  wallet += value;
+  updateWallet();
+  li.remove();
+}
 
-  result.classList.remove("item");
-  void result.offsetWidth; // restart animation trick
-  result.classList.add("item");
+document.querySelectorAll('.open-btn').forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    const casePrice = parseInt(btn.parentElement.dataset.price);
+    if (wallet < casePrice) {
+      alert("Nie masz wystarczających środków!");
+      return;
+    }
 
-  setTimeout(() => {
-    const drop = getRandomSkin();
-    result.textContent = drop.emoji;
-    dropInfo.innerHTML = `🎉 Trafiłeś: <strong>${drop.name}</strong> (${drop.rarity})`;
-  }, 2000);
+    wallet -= casePrice;
+    updateWallet();
+
+    const spinContainer = btn.nextElementSibling;
+    spinContainer.innerHTML = "";
+
+    let caseSkins = skins[casePrice];
+    let spin = document.createElement('div');
+    spin.style.display = 'inline-block';
+    spin.style.animation = 'spin 2s linear forwards';
+
+    for (let i = 0; i < 20; i++) {
+      let item = document.createElement('span');
+      item.style.margin = '0 10px';
+      item.textContent = caseSkins[Math.floor(Math.random() * caseSkins.length)];
+      spin.appendChild(item);
+    }
+
+    spinContainer.appendChild(spin);
+
+    setTimeout(() => {
+      const won = caseSkins[Math.floor(Math.random() * caseSkins.length)];
+      let li = document.createElement('li');
+      let value = (casePrice * (0.6 + Math.random() * 1.5)).toFixed(2);
+      li.innerHTML = `${won} – <strong>${value} zł</strong> <button onclick="sellItem(${value}, this.parentElement)">Sprzedaj</button>`;
+      inventoryList.appendChild(li);
+    }, 2000);
+  });
 });
+
+// Animacja
+const style = document.createElement('style');
+style.textContent = `
+@keyframes spin {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-80%); }
+}`;
+document.head.appendChild(style);
