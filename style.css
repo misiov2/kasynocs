@@ -1,65 +1,82 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(120deg, #1e1e2f, #27293d);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+  overflow-x: hidden;
+  padding-bottom: 50px;
 }
 
-.container {
-  text-align: center;
-  padding: 30px;
-  background: #2f324a;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
-  max-width: 400px;
-  width: 90%;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #1c2b3a;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.wallet {
+  font-weight: bold;
 }
 
 button {
   padding: 10px 20px;
-  background: #ff4b4b;
-  color: #fff;
   border: none;
-  border-radius: 10px;
-  font-size: 18px;
+  background: #2c97de;
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: transform 0.2s;
 }
 
 button:hover {
-  background: #ff1f1f;
+  transform: scale(1.05);
 }
 
-.case-animation {
-  margin: 30px 0;
-  height: 100px;
+.cases {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: #1a1c2b;
-  border: 2px solid #444;
-  border-radius: 12px;
+  gap: 30px;
+  margin: 40px auto;
+}
+
+.case {
+  background: #1a2733;
+  padding: 20px;
+  border-radius: 16px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.spinner {
+  height: 60px;
+  margin-top: 10px;
   overflow: hidden;
-  position: relative;
+  white-space: nowrap;
+  border-top: 2px solid #2c97de;
+  border-bottom: 2px solid #2c97de;
 }
 
-.item {
-  font-size: 36px;
-  animation: spin 2s ease-in-out;
+.inventory {
+  margin: 30px auto;
+  width: 80%;
+  background-color: #1c2b3a;
+  padding: 20px;
+  border-radius: 12px;
 }
 
-@keyframes spin {
-  0%   { transform: translateX(-300px); opacity: 0; }
-  50%  { transform: translateX(0px); opacity: 1; }
-  100% { transform: translateX(300px); opacity: 0; }
+.inventory ul {
+  list-style: none;
+  padding: 0;
 }
 
-#drop-info {
-  font-size: 20px;
-  color: #89ffb6;
-  transition: all 0.4s ease;
+.inventory li {
+  background-color: #29455f;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
 }
