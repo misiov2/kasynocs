@@ -2,19 +2,39 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Symulator Skrzynek</title>
+  <title>HazardCS – Symulator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Symulator Otwierania Skrzynek 🎁</h1>
-    <button id="open-case">Otwórz Skrzynkę</button>
-    <div class="case-animation" id="animation-box">
-      <div class="item" id="result">?</div>
-    </div>
-    <p id="drop-info"></p>
+  <div class="navbar">
+    <h1>HazardCS</h1>
+    <div class="wallet">Portfel: <span id="wallet">0</span> zł</div>
+    <button id="redeem-code">Użyj kodu FREE</button>
   </div>
+
+  <div class="cases">
+    <div class="case" data-price="2">
+      <h2>Skrzynka 1 – 2 zł</h2>
+      <button class="open-btn">Otwórz</button>
+      <div class="spinner"></div>
+    </div>
+    <div class="case" data-price="10">
+      <h2>Skrzynka 2 – 10 zł</h2>
+      <button class="open-btn">Otwórz</button>
+      <div class="spinner"></div>
+    </div>
+    <div class="case" data-price="20">
+      <h2>Skrzynka 3 – 20 zł</h2>
+      <button class="open-btn">Otwórz</button>
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <div class="inventory">
+    <h2>Ekwipunek</h2>
+    <ul id="inventory-list"></ul>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
