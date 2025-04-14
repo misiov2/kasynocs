@@ -18,6 +18,12 @@ body {
 
 .wallet {
   font-weight: bold;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #1f3b4d;
+  padding: 10px 15px;
+  border-radius: 8px;
 }
 
 button {
@@ -34,20 +40,40 @@ button:hover {
   transform: scale(1.05);
 }
 
+.code-redeem {
+  margin: 30px;
+  text-align: center;
+}
+
+.code-redeem input {
+  padding: 10px;
+  width: 200px;
+  border-radius: 8px;
+  border: none;
+  margin-right: 10px;
+}
+
 .cases {
   display: flex;
   justify-content: center;
   gap: 30px;
   margin: 40px auto;
+  flex-wrap: wrap;
 }
 
 .case {
   background: #1a2733;
   padding: 20px;
   border-radius: 16px;
-  width: 250px;
+  width: 300px;
   text-align: center;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.case-img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
 }
 
 .spinner {
