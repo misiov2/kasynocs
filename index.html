@@ -17,20 +17,19 @@
     <div class="wallet">💰 <span id="wallet">0.00</span> zł</div>
   </div>
 
-  <!-- Sekcja: Skrzynki -->
   <div class="section" id="cases-section">
     <div class="cases">
-      <div class="case-card" onclick="openCaseModal(2)">
+      <div class="case-card" data-price="2">
         <img src="img/case1.png" alt="Skrzynka 1">
         <h3>Skrzynka 1</h3>
         <p>2 zł</p>
       </div>
-      <div class="case-card" onclick="openCaseModal(10)">
+      <div class="case-card" data-price="10">
         <img src="img/case2.png" alt="Skrzynka 2">
         <h3>Skrzynka 2</h3>
         <p>10 zł</p>
       </div>
-      <div class="case-card" onclick="openCaseModal(20)">
+      <div class="case-card" data-price="20">
         <img src="img/case3.png" alt="Skrzynka 3">
         <h3>Skrzynka 3</h3>
         <p>20 zł</p>
@@ -38,26 +37,23 @@
     </div>
   </div>
 
-  <!-- Sekcja: Upgrader -->
   <div class="section" id="upgrader-section" style="display:none;">
-    <h2>Upgrader (w budowie 🛠️)</h2>
-    <p>Tu będzie możliwość wymiany skinów na lepsze z obliczonym procentem szansy.</p>
+    <h2>Upgrader</h2>
+    <p>Wymień skiny na lepsze z szansą sukcesu opartą na cenie!</p>
   </div>
 
-  <!-- Sekcja: Ekwipunek -->
   <div class="section" id="inventory-section" style="display:none;">
     <h2>Ekwipunek</h2>
     <ul id="inventory-list"></ul>
   </div>
 
-  <!-- Sekcja: Kody -->
   <div class="section" id="codes-section" style="display:none;">
     <h2>Użyj kodu promocyjnego</h2>
     <input type="text" id="code-input" placeholder="Wpisz kod...">
     <button id="redeem-code">Użyj kodu</button>
   </div>
 
-  <!-- Modal skrzynki -->
+  <!-- Modal -->
   <div id="case-modal" class="modal" style="display:none;">
     <div class="modal-content">
       <span class="close" onclick="closeCaseModal()">&times;</span>
